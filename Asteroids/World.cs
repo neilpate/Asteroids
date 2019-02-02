@@ -13,7 +13,7 @@ namespace Asteroids
     {
         readonly Renderer renderer;
 
-        private const int NumberOfAsteroids = 100;
+        private const int NumberOfAsteroids = 1;
         List<Asteroid> asteroids = new List<Asteroid>();
         AsteroidFactory asteroidFactory = new AsteroidFactory();
      

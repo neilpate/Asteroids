@@ -23,7 +23,7 @@ namespace Asteroids
             this.mass = mass;
             this.velocity = velocity;
             Angle = angle;
-            this.rotationalVelocity = 360;
+            this.rotationalVelocity = 36;
         }
 
         public void Update(long elapsedMilliseconds)
