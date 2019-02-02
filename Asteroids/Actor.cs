@@ -11,15 +11,12 @@ namespace Asteroids
     public abstract class Actor
     {
         public string Name { get; set; }
-        public Point Position { get; private set; }
-
 
         public Physics Physics;
 
         public void Create(string name, Point position, Vector2 velocity, double angle, double mass)
         {
             this.Name = name;
-            this.Position = position;
             Physics = new Physics(mass, position, velocity, angle);
 
         }
