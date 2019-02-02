@@ -17,7 +17,7 @@ namespace Asteroids.Tests
             var asteroidFactory = new AsteroidFactory();
             var asteroid = asteroidFactory.CreateAsteroid(100, 100);
 
-            string expectedName = "first1";
+            string expectedName = "first";
 
             Assert.AreEqual(expectedName, asteroid.Name);
 

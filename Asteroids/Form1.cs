@@ -9,28 +9,32 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Globalization;
+using SDL2;
 
 namespace Asteroids
 {
     public partial class Form1 : Form
     {
-        Stopwatch stopwatch;
+        private Game game;
 
         public Form1()
         {
             InitializeComponent();
-            
+
+            game = new Game();
+
             //20 ms timer gives 50 FPS
             timer1.Interval = 20;
             timer1.Enabled = true;
 
-            stopwatch = Stopwatch.StartNew();
-            stopwatch.Start();
+          
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            StopwatchTime.Text = stopwatch.ElapsedMilliseconds.ToString();
+            game.Update();
         }
+
     }
 }

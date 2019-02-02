@@ -21,9 +21,12 @@ namespace Asteroids
 
             var velocity = new Vector2(rnd.Next(10), rnd.Next(10));
 
-            string name = "first";
+            var angle = (double)(rnd.Next(360));
 
-            var asteroid = new Asteroid(name, position, velocity, Mass );
+
+            string name = "";
+
+            var asteroid = new Asteroid(name, position, velocity, angle, Mass );
             return asteroid;
         }
 
