@@ -33,8 +33,7 @@ namespace Asteroids
 
             fontManager = new FontManager();
             fontManager.CreateFont(@"c:\windows\fonts\consola.ttf", "consolas", 28);
-
-
+            
             var textColor = new SDL.SDL_Color
             {
                 r = 0xFF,
@@ -48,15 +47,13 @@ namespace Asteroids
                 y = 0
             };
             stringTextures.Add("fps", st);
-            
-            
-            //Texture texture = new Texture();
-            //if (texture.LoadFromRenderedText("Game not started", textColor, renderer, fontManager.GetFont("consolas")))
-            //    textures.Add("score_string", texture);
 
-            //texture = new Texture();
-            //if (texture.LoadFromRenderedText("FPS", textColor, renderer, fontManager.GetFont("consolas")))
-            //    textures.Add("fps_string", texture);
+            st = new StringTexture(textColor, renderer, "consolas", fontManager)
+            {
+                x = 100,
+                y = 100
+            };
+            stringTextures.Add("score", st);
 
 
         }
@@ -77,6 +74,15 @@ namespace Asteroids
             st.LoadFromRenderedText($"{fps:F} FPS");
             st.Render();
         }
+
+
+        public void RenderScoreString(string score)
+        {
+            var st = stringTextures["score"];
+            st.LoadFromRenderedText(score);
+            st.Render();
+        }
+
 
 
 

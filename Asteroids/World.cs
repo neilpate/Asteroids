@@ -73,6 +73,8 @@ namespace Asteroids
 
             DrawAll();
             renderer.RenderFpsString(1000.0f/(float)elapsedMilliseconds);
+            renderer.RenderScoreString("Hooray!!!");
+
             SDL.SDL_RenderPresent(renderer.renderer);
 
 
