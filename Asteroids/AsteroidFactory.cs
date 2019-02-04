@@ -17,16 +17,16 @@ namespace Asteroids
         public Asteroid CreateAsteroid(int maxX, int maxY)
         {
 
-            var position = new Point(rnd.Next(maxX), rnd.Next(maxY));
+            var initialPosition = new Point(rnd.Next(maxX), rnd.Next(maxY));
 
-            var velocity = new Vector2(rnd.Next(10), rnd.Next(10));
+            var initialVelocity = new Vector2(rnd.Next(10)-5, rnd.Next(10)-5);
 
-            var angle = (double)(rnd.Next(360));
+            var initialAngle = (double)(rnd.Next(360)-180);
 
 
             string name = "";
 
-            var asteroid = new Asteroid(name, position, velocity, angle, Mass );
+            var asteroid = new Asteroid(name, initialPosition, initialVelocity, initialAngle, Mass );
             return asteroid;
         }
 

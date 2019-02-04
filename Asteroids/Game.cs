@@ -7,10 +7,15 @@ using System.Diagnostics;
 
 namespace Asteroids
 {
+    /// <summary>
+    /// This is the primary class.
+    /// It is responsible for controlling all the actors in play (creation and destruction)
+    /// all the game logic
+    /// </summary>
     class Game
     {
         World world;
-        Renderer render;
+        readonly Renderer render;
 
         readonly Stopwatch stopwatch = new Stopwatch();
 

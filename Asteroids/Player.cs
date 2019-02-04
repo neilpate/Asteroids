@@ -10,12 +10,17 @@ using SDL2;
 
 namespace Asteroids
 {
-    public class Asteroid : Actor
+    public class Player : Actor
     {
-        const int size = 10;
+        const int size = 25;
 
-        public Asteroid(string name, Point initialPosition, Vector2 initialVelocity, double initialAngle, double mass)
+        public Player(string name)
         {
+            var initialPosition = new Point(250, 250);
+            var initialVelocity = new Vector2(0, 0);
+            var initialAngle = 0;
+            var mass = 100.0;
+
             this.Create(name, initialPosition, initialVelocity, initialAngle, mass);
 
         }
@@ -42,7 +47,7 @@ namespace Asteroids
                 points[i] = point;
             }
 
-            SDL.SDL_SetRenderDrawColor(renderer.renderer, 0xFF, 0x00, 0x00, 0xFF);
+            SDL.SDL_SetRenderDrawColor(renderer.renderer, 0x00, 0xFF, 0x00, 0xFF);
 
             SDL.SDL_RenderDrawPoint(renderer.renderer, Position.X, Position.Y);
             SDL.SDL_RenderDrawLines(renderer.renderer, points, 5);
