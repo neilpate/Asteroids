@@ -15,27 +15,21 @@ namespace Asteroids
         public int x;
         public int y;
 
-        private IntPtr renderer;
-        private string font;
-        private FontManager fontManager;
-        
+        private readonly IntPtr renderer;
+        private readonly IntPtr font;
+        private Texture texture = new Texture();
 
-
-        Texture texture = new Texture();
-
-        public StringTexture(SDL.SDL_Color colour, IntPtr renderer, string font, FontManager fontManager)
+        public StringTexture(IntPtr renderer, IntPtr font, SDL.SDL_Color colour)
         {
             this.Colour = colour;
             this.renderer = renderer;
             this.font = font;
-            this.fontManager = fontManager;
             
         }
 
         public void LoadFromRenderedText(string text)
         {
-            texture.LoadFromRenderedText(text, Colour, renderer, fontManager.GetFont("consolas"));
-
+            texture.LoadFromRenderedText(text, Colour, renderer, font) ;
         }
 
         public void Render()

@@ -16,14 +16,17 @@ namespace Asteroids
 
         public Point Position { get; set; }
 
-        public void Create(string name, Point initialPosition, Vector2 initialVelocity, double initialAngle, double mass)
+        public void Create(string name, Point initialPosition, Vector2 initialVelocity, 
+            float initialAngle, float initialAngularVelocity, float mass)
         {
             this.Name = name;
-            Physics = new Physics(initialVelocity, initialAngle, mass);
+            Physics = new Physics(initialVelocity, initialAngle, initialAngularVelocity, mass);
 
             Position = initialPosition;
 
         }
+
+        public abstract void Draw(IntPtr renderer);
 
         public void Update(long elapsedMilliseconds)
         {

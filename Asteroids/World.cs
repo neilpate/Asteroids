@@ -18,7 +18,7 @@ namespace Asteroids
         const int SizeX = 640;
         const int SizeY = 480;
 
-        readonly Renderer renderer;
+        readonly Renderer renderer; //created in Game and passed in when the World is created
 
         private const int NumberOfAsteroids = 5;
         List<Asteroid> asteroids = new List<Asteroid>();
@@ -59,8 +59,8 @@ namespace Asteroids
         /// <param name="elapsedMilliseconds"></param>
         public void Update(long elapsedMilliseconds)
         {
-            SDL.SDL_SetRenderDrawColor(renderer.renderer, 0x00, 0x00, 0x00, 0xFF);
-            SDL.SDL_RenderClear(renderer.renderer);
+            SDL.SDL_SetRenderDrawColor(renderer.Rend, 0x00, 0x00, 0x00, 0xFF);
+            SDL.SDL_RenderClear(renderer.Rend);
 
             foreach (var asteroid  in asteroids)
             {
@@ -71,28 +71,26 @@ namespace Asteroids
             player.Update(elapsedMilliseconds);
             WrapPosition(player);
 
-            DrawAll();
-            renderer.RenderFpsString(1000.0f/(float)elapsedMilliseconds);
-            renderer.RenderScoreString("Hooray!!!");
-
-            SDL.SDL_RenderPresent(renderer.renderer);
-
-
         }
         /// <summary>
         /// Implements the drawing of all game actors
         /// </summary>
-        private void DrawAll()
+        private void DrawAll(Renderer renderer)
         {
             foreach (var asteroid in asteroids)
             {
-                asteroid.Draw(renderer);
+                asteroid.Draw(renderer.Rend);
             }
-            player.Draw(renderer);
+            player.Draw(renderer.Rend);
 
         }
 
-
+        public List<Actor> GetActors()
+        {
+            List<Actor> actors = asteroids.Cast<Actor>().ToList();
+                actors.Add(player);
+            return actors;
+        }
 
         /// <summary>
         /// Wraps a point to the world size

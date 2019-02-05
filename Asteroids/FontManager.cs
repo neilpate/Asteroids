@@ -38,8 +38,7 @@ namespace Asteroids
 
         public IntPtr GetFont(string name)
         {
-            IntPtr font;
-            fonts.TryGetValue(name, out font);
+            fonts.TryGetValue(name, out var font);
             return font;
         }
     }

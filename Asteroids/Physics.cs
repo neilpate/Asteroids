@@ -11,26 +11,27 @@ namespace Asteroids
 
     public class Physics
     {
-        const double DegreesInACircle = 360;
+        const float DegreesInACircle = 360;
 
-        private double mass;
+        private float mass;
         public Vector2 velocity;
-        private double rotationalVelocity;   //in deg/s
-        public double Angle { get; private set; }
+        private float angularVelocity;   //in deg/s
+        public float Angle { get; private set; }
     
 
 
-        public Physics(Vector2 velocity, double angle, double mass)
+        public Physics(Vector2 initialVelocity, float initialAngle, 
+            float initialAngularVelocity, float mass)
         {
             this.mass = mass;
-            this.velocity = velocity;
-            Angle = angle;
-            this.rotationalVelocity = 360;
+            velocity = initialVelocity;
+            Angle = initialAngle;
+            angularVelocity = initialAngularVelocity;
         }
 
         public void Update(long elapsedMilliseconds)
         {
-            Angle += rotationalVelocity * elapsedMilliseconds / 1000;
+            Angle += angularVelocity * elapsedMilliseconds / 1000;
             Angle = Angle % DegreesInACircle;
 
            

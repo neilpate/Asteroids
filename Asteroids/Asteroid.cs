@@ -14,13 +14,13 @@ namespace Asteroids
     {
         const int size = 10;
 
-        public Asteroid(string name, Point initialPosition, Vector2 initialVelocity, double initialAngle, double mass)
+        public Asteroid(string name, Point initialPosition, Vector2 initialVelocity, 
+            float initialAngularVelocity, float initialAngle, float mass)
         {
-            this.Create(name, initialPosition, initialVelocity, initialAngle, mass);
-
+            this.Create(name, initialPosition, initialVelocity, initialAngle, initialAngularVelocity, mass);
         }
 
-        public void Draw(Renderer renderer)
+        public override void Draw(IntPtr renderer)
         {
 
             double angleRadians;
@@ -38,14 +38,12 @@ namespace Asteroids
                 SDL.SDL_Point point;
                 point.x = Position.X + x;
                 point.y = Position.Y + y;
-                //Console.WriteLine($"x: {one.x:F2}   y:{one.y:F2}");
                 points[i] = point;
             }
 
-            SDL.SDL_SetRenderDrawColor(renderer.renderer, 0xFF, 0x00, 0x00, 0xFF);
-
-            SDL.SDL_RenderDrawPoint(renderer.renderer, Position.X, Position.Y);
-            SDL.SDL_RenderDrawLines(renderer.renderer, points, 5);
+            SDL.SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
+            SDL.SDL_RenderDrawPoint(renderer, Position.X, Position.Y);
+            SDL.SDL_RenderDrawLines(renderer, points, 5);
 
 
 
