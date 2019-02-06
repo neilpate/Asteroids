@@ -7,6 +7,8 @@ using System.Drawing;
 using System.Numerics;
 using System.Windows.Forms;
 using SDL2;
+using static Asteroids.Utility;
+using static System.Math;
 
 namespace Asteroids
 {
@@ -29,7 +31,6 @@ namespace Asteroids
         public override void Draw(IntPtr renderer)
         {
 
-            double angleRadians;
             int x;
             int y;
 
@@ -41,9 +42,9 @@ namespace Asteroids
 
             for (int i = 0; i < (numSides+1); i++)
             {
-                angleRadians = (Math.PI * (Physics.Angle + i * (360.0/(float)numSides))) / 180.0;
-                x = (int)(Math.Cos(angleRadians) * size);
-                y = (int)(Math.Sin(angleRadians) * size);
+                var angleRadians = DegreesToRadians(Physics.Angle + i * (360.0f / (float)numSides));
+                x = (int)(Cos(angleRadians) * size);
+                y = (int)(Sin(angleRadians) * size);
 
                 SDL.SDL_Point point;
                 point.x = Position.X + x;
@@ -58,5 +59,12 @@ namespace Asteroids
 
 
         }
+
+        public void Thrust()
+        {
+           // Physics.velocity += 1;
+        }
+
+       
     }
 }

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Numerics;
 using System.Drawing;
+using static System.Math;
+using static Asteroids.Utility;
 
 namespace Asteroids
 {
@@ -33,8 +35,31 @@ namespace Asteroids
         {
             Angle += angularVelocity * elapsedMilliseconds / 1000;
             Angle = Angle % DegreesInACircle;
-
-           
         }
+
+        public void IncreaseVelocity()
+        {
+            //Figure out how much movement to add to each component
+            //based on the heading (angle)
+            var xComponent = 2 * Cos(DegreesToRadians(Angle));
+            var yComponent = 2 * Sin(DegreesToRadians(Angle));
+
+            Vector2  tempVelocity = velocity;
+            velocity.X = (float)(tempVelocity.X + xComponent);
+            velocity.Y = (float)(tempVelocity.Y + yComponent);
+
+        }
+
+        public void RotateClockwise()
+        {
+            Angle += 10;
+        }
+
+        public void RotateAntiClockwise()
+        {
+            Angle -= 10;
+        }
+
+
     }
 }

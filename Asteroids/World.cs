@@ -24,7 +24,7 @@ namespace Asteroids
         List<Asteroid> asteroids = new List<Asteroid>();
         AsteroidFactory asteroidFactory = new AsteroidFactory();
 
-        Player player;
+        public Player player;
 
         public World(Renderer renderer)
         {

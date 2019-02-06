@@ -33,7 +33,8 @@ namespace Asteroids
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            game.Update();
+            if (game.Update())
+                System.Windows.Forms.Application.Exit();
         }
 
     }
